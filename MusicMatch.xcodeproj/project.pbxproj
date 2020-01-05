@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE53337223C189890089BCA7 /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53337123C189890089BCA7 /* MusicModel.swift */; };
+		CE53337723C18A220089BCA7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53337623C18A220089BCA7 /* API.swift */; };
+		CE53337923C18B090089BCA7 /* LyricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53337823C18B090089BCA7 /* LyricsView.swift */; };
+		CE53337B23C18D1D0089BCA7 /* LyricsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE53337A23C18D1D0089BCA7 /* LyricsModel.swift */; };
 		CED7BDED23BFCB93007288C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7BDEC23BFCB93007288C6 /* AppDelegate.swift */; };
 		CED7BDEF23BFCB93007288C6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7BDEE23BFCB93007288C6 /* SceneDelegate.swift */; };
 		CED7BDF123BFCB93007288C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7BDF023BFCB93007288C6 /* ContentView.swift */; };
@@ -38,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE53337123C189890089BCA7 /* MusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
+		CE53337623C18A220089BCA7 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		CE53337823C18B090089BCA7 /* LyricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsView.swift; sourceTree = "<group>"; };
+		CE53337A23C18D1D0089BCA7 /* LyricsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsModel.swift; sourceTree = "<group>"; };
 		CED7BDE923BFCB93007288C6 /* MusicMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CED7BDEC23BFCB93007288C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CED7BDEE23BFCB93007288C6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +90,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE53337323C189C50089BCA7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE53337123C189890089BCA7 /* MusicModel.swift */,
+				CE53337A23C18D1D0089BCA7 /* LyricsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CE53337423C189D50089BCA7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CED7BE1E23BFD4D5007288C6 /* Music.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CE53337523C189E00089BCA7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CED7BE1C23BFCF92007288C6 /* CardView.swift */,
+				CE53337823C18B090089BCA7 /* LyricsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CED7BDE023BFCB93007288C6 = {
 			isa = PBXGroup;
 			children = (
@@ -108,8 +142,10 @@
 				CED7BDEC23BFCB93007288C6 /* AppDelegate.swift */,
 				CED7BDEE23BFCB93007288C6 /* SceneDelegate.swift */,
 				CED7BDF023BFCB93007288C6 /* ContentView.swift */,
-				CED7BE1C23BFCF92007288C6 /* CardView.swift */,
-				CED7BE1E23BFD4D5007288C6 /* Music.swift */,
+				CE53337523C189E00089BCA7 /* Views */,
+				CE53337423C189D50089BCA7 /* Controller */,
+				CE53337323C189C50089BCA7 /* Models */,
+				CE53337623C18A220089BCA7 /* API.swift */,
 				CED7BDF223BFCB97007288C6 /* Assets.xcassets */,
 				CED7BDF723BFCB97007288C6 /* LaunchScreen.storyboard */,
 				CED7BDFA23BFCB97007288C6 /* Info.plist */,
@@ -282,10 +318,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CED7BDED23BFCB93007288C6 /* AppDelegate.swift in Sources */,
+				CE53337223C189890089BCA7 /* MusicModel.swift in Sources */,
 				CED7BDEF23BFCB93007288C6 /* SceneDelegate.swift in Sources */,
 				CED7BE1F23BFD4D5007288C6 /* Music.swift in Sources */,
+				CE53337923C18B090089BCA7 /* LyricsView.swift in Sources */,
 				CED7BE1D23BFCF92007288C6 /* CardView.swift in Sources */,
 				CED7BDF123BFCB93007288C6 /* ContentView.swift in Sources */,
+				CE53337B23C18D1D0089BCA7 /* LyricsModel.swift in Sources */,
+				CE53337723C18A220089BCA7 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

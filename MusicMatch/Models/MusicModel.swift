@@ -1,56 +1,12 @@
 //
-//  Music.swift
+//  TrackModel.swift
 //  MusicMatch
 //
-//  Created by Sirak on 1/3/20.
+//  Created by Sirak on 1/4/20.
 //  Copyright © 2020 Sirak. All rights reserved.
 //
 
 import Foundation
-import Alamofire
-
-
-
-
-class Music {
-    
-    
-    
-    func signInRequest (completionHandler: @escaping (Result<[Track]>) -> Void) {
-           let url = "https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=10&country=us&f_has_lyrics=1&apikey=7be2a50a6bb40c38968eb9133ed136dd"
-           
-        Alamofire.request(url, method: .get)
-                           .validate(statusCode: 200...300)
-                           .responseData { (dataResponse) in
-    
-    
-                   if (dataResponse.error != nil) {
-                       completionHandler(.failure(dataResponse.error!))
-                       print(dataResponse.error!)
-                       return
-                   }
-    
-                   do {
-                   let data  = try JSONDecoder().decode(MusicModel.self, from: dataResponse.data!)
-                    var holder = [Track]()
-                    
-                    data.message.body.trackList.forEach{
-                        holder.append($0.track)
-                    }
-                    completionHandler(.success(holder))
-
-                   } catch {
-                       print(error)
-                       completionHandler(.failure(error))
-                   }
-    
-                  }
-              }
-    
-}
-
-
-
    
 struct MusicModel: Codable {
     let message: Message
@@ -123,4 +79,3 @@ struct Header: Codable {
 }
 
 // MARK: - Encode/decode helpers
-
