@@ -9,37 +9,46 @@
 import Foundation
 
 
-struct Welcome: Codable {
-    let message: LyricsMessage
+
+// MARK: - Welcome
+struct Lyric: Codable {
+    let message: LyricMessage
 }
 
 // MARK: - Message
-struct LyricsMessage: Codable {
-    let header: Header
-    let body: LyricsBody
+struct LyricMessage: Codable {
+    let header: LyricHeader
+    let body: LyricBody
 }
 
 // MARK: - Body
-struct LyricsBody: Codable {
+struct LyricBody: Codable {
     let lyrics: Lyrics
 }
 
 // MARK: - Lyrics
 struct Lyrics: Codable {
-    let lyricsID, restricted, instrumental: Int
-    let lyricsBody, lyricsLanguage: String
-    let scriptTrackingURL, pixelTrackingURL: String
-    let lyricsCopyright: String
+   
+    let lyricsBody: String
+
 
     enum CodingKeys: String, CodingKey {
-        case lyricsID = "lyrics_id"
-        case restricted, instrumental
+
         case lyricsBody = "lyrics_body"
-        case lyricsLanguage = "lyrics_language"
-        case scriptTrackingURL = "script_tracking_url"
-        case pixelTrackingURL = "pixel_tracking_url"
-        case lyricsCopyright = "lyrics_copyright"
+
     }
 }
+
+// MARK: - Header
+struct LyricHeader: Codable {
+    let statusCode: Int
+    let executeTime: Double
+
+    enum CodingKeys: String, CodingKey {
+        case statusCode = "status_code"
+        case executeTime = "execute_time"
+    }
+}
+
 
 

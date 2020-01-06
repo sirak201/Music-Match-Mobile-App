@@ -7,10 +7,56 @@
 //
 
 import SwiftUI
+class ViewModel: ObservableObject {
+    
+    @Published var tracks = [Track]()
+    @Published var searchText = "" {
+        didSet {
+            if searchText != "" {
+                searchForText(search: searchText)
+            } else {
+                callFetchTracks()
+            }
+        }
+    }
+    
+    func callFetchTracks () {
+        let music = Music()
+        music.signInRequest { (res) in
+            switch res {
+                
+            case .success(let list):
+                self.tracks = list
+            case .failure(_):
+                print("Failed To print")
+         
+            }
+        }
+        
+    }
+    
+    
+    func searchForText (search : String) {
+          let music = Music()
+          music.searchByLyric(searchString: search) { (res) in
+              switch res {
+                  
+              case .success(let list):
+                  self.tracks = list
+              case .failure(_):
+                  print("Failed To print")
+           
+              }
+          }
+          
+      }
+}
 
 struct ContentView: View {
     
-    @State var trackList = [Track]()
+    @ObservedObject var viewModel = ViewModel()
+
+
     var body: some View {
         NavigationView {
             
@@ -20,12 +66,21 @@ struct ContentView: View {
                     .bold()
                     .padding()
                 
+                TextField("Type your search",text: self.$viewModel.searchText)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding(.horizontal)
+              
+                
                 HStack {
-                    Spacer()
-                    List(trackList) { track in
-                         CardView(track: track).frame(width: 300, height: 250)
+                    List(viewModel.tracks) { track in
+                        
+                       
+
+                        NavigationLink(destination: LyricsView(track: track)) {
+                            CardView(track: track).frame(width: 400, height: 250)
+                       }
                     }
-                     Spacer()
+               
                 }
 
                 Spacer()
@@ -37,26 +92,13 @@ struct ContentView: View {
          
             
         }.onAppear{
-            self.callFetchTracks()
+            self.viewModel.callFetchTracks()
         
         }
     }
     
     
-    func callFetchTracks () {
-        let music = Music()
-        music.signInRequest { (res) in
-            switch res {
-                
-            case .success(let list):
-                self.trackList = list
-            case .failure(_):
-                print("Failed To print")
-         
-            }
-        }
-        
-    }
+
 }
 
 struct ContentView_Previews: PreviewProvider {

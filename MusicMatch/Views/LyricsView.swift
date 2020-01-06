@@ -10,10 +10,13 @@ import SwiftUI
 
 struct LyricsView: View {
     var track : Track
+   @State var lyric : Lyric?
+    
+    
     var body: some View {
         
         ZStack {
-            Color.blue.edgesIgnoringSafeArea(.all)
+            
             VStack {
                 ZStack {
                     RoundedRectangle(cornerRadius: 8)
@@ -54,19 +57,36 @@ struct LyricsView: View {
                    
 
                  ScrollView {
-                     Text("Hello , is it me you are looking for ")
-                         .font(.system(size: 40, weight: .heavy, design: .rounded))
-                         .foregroundColor(Color.white)
-                     .padding()
-                         .lineLimit(nil)
+                    if (lyric != nil) {
+                        Text(lyric!.message.body.lyrics.lyricsBody)
+                                             .font(.system(size: 40, weight: .heavy, design: .rounded))
+                                             .foregroundColor(Color.white)
+                                         .padding()
+                                             .lineLimit(nil)
+                    }
+                 
                  }
                  .lineSpacing(5)
-                 .background(Color.green)
+                 
                  .padding([.top , .leading , .trailing])
                  .edgesIgnoringSafeArea(.bottom)
             }
             
      
+        }.background(Color.init(#colorLiteral(red: 0.8549019694, green: 0.4193620483, blue: 0.7387417899, alpha: 1)).edgesIgnoringSafeArea(.all))
+        
+        .onAppear{
+            let music = Music()
+            music.getMusic(id: self.track.id) { (res) in
+                switch res {
+                    
+                case .success(let lyr):
+                    self.lyric = lyr
+                case .failure(_):
+                    return
+               
+                }
+            }
         }
         
     }
